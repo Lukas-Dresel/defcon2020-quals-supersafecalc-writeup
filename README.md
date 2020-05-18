@@ -5,7 +5,7 @@ More detailed writeup inc.
 Thanks to @4rbit3r and @Arm1stice for solving this challenge with me!
 
 ## Challenge summary
-This challenge was a ptrace-jail running a amall calculator stub after parsing your math expressions and converting the reverse polish notation to assembly instructions. Then it runs your code in the stub while ptracing it. 
+This challenge was a ptrace-jail running a small calculator stub after parsing your math expressions and converting the reverse polish notation to assembly instructions. Then it runs your code in the stub while ptracing it. 
 
 There is a Seccomp filter that outright `SECCOMP_RET_ALLOW`'s certain syscalls and forwards others to the `ptrace`-ing process for verification using `SECCOMP_RET_TRACE`. The ptracing process would check their arguments and allow some system calls a fixed amount of times and others only with constraints on the parameters. E.g. We could only open files as long as the path was the hardcoded result file name. 
 
