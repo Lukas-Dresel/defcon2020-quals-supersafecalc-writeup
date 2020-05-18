@@ -1,0 +1,1 @@
+# defcon2020-quals-supersafecalc-writeup
